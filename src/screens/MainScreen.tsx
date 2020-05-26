@@ -4,6 +4,7 @@ import { scale } from "react-native-size-matters";
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackNavScreens } from ".";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 type NavigationProp = StackNavigationProp<RootStackNavScreens, "MainScreen">;
@@ -14,12 +15,16 @@ export type MainScreenProps = {
 }
 
 export function MainScreen({ route, navigation }: MainScreenProps) {
+    console.log(navigation, 'props')
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={{ flex: 1 }}>
-                <Text style={{ fontSize: scale(22), fontWeight: 'bold' }}>
-                    Main Screen
-                </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('DrawerNavigator')}>
+                    <Text>Open drawer</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.push('AboutScreen')}>
+                    <Text>About</Text>
+                </TouchableOpacity>
             </ScrollView>
         </SafeAreaView>
     );
