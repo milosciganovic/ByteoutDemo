@@ -1,24 +1,22 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { scale } from 'react-native-size-matters';
-import { SubNavigator } from './types/SubNavigator';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
-import {HomeDrawerNav, HomeDrawerNavScreens} from './RootTabNav/HomeDrawerNav';
-import {AboutScreen} from './AboutScreen';
+import { NewsScreen } from './NewsScreen';
+import { ArticleScreen } from './ArticleScreen';
 
-export type RootStackNavScreens = {
-    'HomeDrawerNav': SubNavigator<HomeDrawerNavScreens>;
-    'AboutScreen': undefined; 
+export type AllNewsStackNavScreens = {
+    'News': undefined;
+    'Article': {articleId: number} | undefined;
 };
 
-const Stack = createStackNavigator<RootStackNavScreens>();
+const Stack = createStackNavigator<AllNewsStackNavScreens>();
 
-
-export function RootStackNav() {
+export function AllNewsStackNav() {
     return (
         <Stack.Navigator
-            headerMode="none"
+            headerMode="screen"
             screenOptions={{
                 headerLeftContainerStyle: { paddingLeft: Platform.OS === 'ios' ? scale(10) : 0 },
                 headerBackTitleVisible: false,
@@ -27,14 +25,13 @@ export function RootStackNav() {
             }}
         >
             <Stack.Screen
-                name="HomeDrawerNav"
-                component={HomeDrawerNav}
+                name="News"
+                component={NewsScreen}
             />
             <Stack.Screen
-                name="AboutScreen"
-                component={AboutScreen}
+                name="Article"
+                component={ArticleScreen}
             />
-
 
         </Stack.Navigator>
     );
