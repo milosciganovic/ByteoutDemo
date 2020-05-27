@@ -14,16 +14,15 @@ export type RootStackNavScreens = {
 
 const Stack = createStackNavigator<RootStackNavScreens>();
 
-
 export function RootStackNav() {
     return (
         <Stack.Navigator
+            mode="modal"
             headerMode="none"
             screenOptions={{
                 headerLeftContainerStyle: { paddingLeft: Platform.OS === 'ios' ? scale(10) : 0 },
                 headerBackTitleVisible: false,
                 headerTitleAlign: 'center',
-                ...TransitionPresets.SlideFromRightIOS,
             }}
         >
             <Stack.Screen

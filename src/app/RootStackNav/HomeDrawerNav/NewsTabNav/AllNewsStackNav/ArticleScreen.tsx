@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, ScrollView, Button, SafeAreaView } from "react-native";
+import { Text, ScrollView, SafeAreaView } from "react-native";
 import { scale } from "react-native-size-matters";
 
 import { RouteProp, CompositeNavigationProp } from '@react-navigation/native';

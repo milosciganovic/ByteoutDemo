@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Button } from 'react-native';
 import { scale } from 'react-native-size-matters';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
@@ -8,7 +8,7 @@ import { ArticleScreen } from './ArticleScreen';
 
 export type AllNewsStackNavScreens = {
     'NewsScreen': undefined;
-    'ArticleScreen': {articleId: number} | undefined;
+    'ArticleScreen': { articleId: number } | undefined;
 };
 
 const Stack = createStackNavigator<AllNewsStackNavScreens>();

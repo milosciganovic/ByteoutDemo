@@ -2,7 +2,7 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { SubNavigator } from '../types/SubNavigator';
 
-import {NewsTabNavScreens, NewsTabNav} from './NewsTabNav';
+import { NewsTabNavScreens, NewsTabNav } from './NewsTabNav';
 import { SettingsScreen } from './SettingsScreen';
 
 export type HomeDrawerNavScreens = {
@@ -14,7 +14,7 @@ const Drawer = createDrawerNavigator<HomeDrawerNavScreens>();
 
 export function HomeDrawerNav() {
     return (
-        <Drawer.Navigator drawerType="front">
+        <Drawer.Navigator drawerType="back">
             <Drawer.Screen
                 name="NewsTabNav"
                 component={NewsTabNav}
