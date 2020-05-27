@@ -1,13 +1,13 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { SubNavigator } from '../../types/SubNavigator';
+import { SubNavigator } from '../types/SubNavigator';
 
 import {NewsTabNavScreens, NewsTabNav} from './NewsTabNav';
 import { SettingsScreen } from './SettingsScreen';
 
 export type HomeDrawerNavScreens = {
-    'News': SubNavigator<NewsTabNavScreens>
-    'Settings': undefined;
+    'NewsTabNav': SubNavigator<NewsTabNavScreens>
+    'SettingsScreen': undefined;
 };
 
 const Drawer = createDrawerNavigator<HomeDrawerNavScreens>();
@@ -16,11 +16,11 @@ export function HomeDrawerNav() {
     return (
         <Drawer.Navigator drawerType="front">
             <Drawer.Screen
-                name="News"
+                name="NewsTabNav"
                 component={NewsTabNav}
             />
             <Drawer.Screen
-                name="Settings"
+                name="SettingsScreen"
                 component={SettingsScreen}
             />
         </Drawer.Navigator>

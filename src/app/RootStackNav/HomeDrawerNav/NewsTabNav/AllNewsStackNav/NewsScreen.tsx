@@ -6,16 +6,24 @@ import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { AllNewsStackNavScreens } from '.';
-import { HomeDrawerNavScreens } from '../../../HomeDrawerNav';
+import { HomeDrawerNavScreens } from '../..';
 import { RootStackNavScreens } from "src/app/RootStackNav";
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { NewsTabNavScreens } from "..";
 
-export type NewsScreenNavigationProp = CompositeNavigationProp<
-    StackNavigationProp<AllNewsStackNavScreens, 'News'>,
-    DrawerNavigationProp<HomeDrawerNavScreens & RootStackNavScreens>
+export type NewsScreenNavProp = CompositeNavigationProp<
+    StackNavigationProp<AllNewsStackNavScreens, 'NewsScreen'>,
+    CompositeNavigationProp<
+        BottomTabNavigationProp<NewsTabNavScreens>,
+        CompositeNavigationProp<
+            DrawerNavigationProp<HomeDrawerNavScreens>,
+            StackNavigationProp<RootStackNavScreens>
+        >
+    >
 >;
 
 export interface NewsScreenProps {
-    navigation: NewsScreenNavigationProp;
+    navigation: NewsScreenNavProp;
 }
 
 export function NewsScreen({ navigation }: NewsScreenProps) {
@@ -25,9 +33,9 @@ export function NewsScreen({ navigation }: NewsScreenProps) {
                 <Text style={{ fontSize: scale(22), fontWeight: 'bold' }}>
                     News Screen
                 </Text>
-                <Button title="Go to article" onPress={() => navigation.navigate('Article', { articleId: 3 })} />
+                <Button title="Go to article" onPress={() => navigation.navigate('ArticleScreen', { articleId: 3 })} />
                 <Button title="Open Drawer" onPress={() => navigation.openDrawer()} />
-                <Button title="Go to settings" onPress={() => navigation.navigate('Settings')} />
+                <Button title="Go to settings" onPress={() => navigation.navigate('SettingsScreen')} />
                 <Button title="Open About" onPress={() => navigation.navigate('AboutScreen')} />
             </ScrollView>
         </SafeAreaView>

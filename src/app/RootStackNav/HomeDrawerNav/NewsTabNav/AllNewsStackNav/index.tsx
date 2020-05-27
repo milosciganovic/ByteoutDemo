@@ -7,8 +7,8 @@ import { NewsScreen } from './NewsScreen';
 import { ArticleScreen } from './ArticleScreen';
 
 export type AllNewsStackNavScreens = {
-    'News': undefined;
-    'Article': {articleId: number} | undefined;
+    'NewsScreen': undefined;
+    'ArticleScreen': {articleId: number} | undefined;
 };
 
 const Stack = createStackNavigator<AllNewsStackNavScreens>();
@@ -25,11 +25,11 @@ export function AllNewsStackNav() {
             }}
         >
             <Stack.Screen
-                name="News"
+                name="NewsScreen"
                 component={NewsScreen}
             />
             <Stack.Screen
-                name="Article"
+                name="ArticleScreen"
                 component={ArticleScreen}
             />
 

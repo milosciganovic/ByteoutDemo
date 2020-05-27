@@ -5,7 +5,7 @@ import { scale } from "react-native-size-matters";
 import { RouteProp, CompositeNavigationProp } from '@react-navigation/native';
 import { AllNewsStackNavScreens } from '.';
 
-export type ArticleScreenRouteProp = RouteProp<AllNewsStackNavScreens, "Article">;
+export type ArticleScreenRouteProp = RouteProp<AllNewsStackNavScreens, "ArticleScreen">;
 
 export interface ArticleScreenProps {
     route: ArticleScreenRouteProp;

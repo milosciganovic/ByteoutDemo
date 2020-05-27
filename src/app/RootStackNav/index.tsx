@@ -4,7 +4,7 @@ import { scale } from 'react-native-size-matters';
 import { SubNavigator } from './types/SubNavigator';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
-import {HomeDrawerNav, HomeDrawerNavScreens} from './RootTabNav/HomeDrawerNav';
+import {HomeDrawerNav, HomeDrawerNavScreens} from './HomeDrawerNav';
 import {AboutScreen} from './AboutScreen';
 
 export type RootStackNavScreens = {
