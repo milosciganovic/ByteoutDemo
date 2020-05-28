@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
@@ -15,15 +15,41 @@ export type NewsTabNavScreens = {
 const BottomTab = createMaterialBottomTabNavigator<NewsTabNavScreens>();
 
 export function NewsTabNav() {
+    const [showTab, setShowTab] = useState(true);
+
     return (
-        <BottomTab.Navigator>
+        <BottomTab.Navigator
+            shifting={true}
+            barStyle={{display:(showTab?'flex':'none')}}
+        >
             <BottomTab.Screen
                 name="AllNewsStackNav"
                 component={AllNewsStackNav}
-                options={{
-                    tabBarLabel: 'All News',
-                    tabBarIcon: ({ focused, color,  }) =>
-                        <Icon name={"newspaper"} style={{ color }} />
+                listeners={{
+                    state: state => {
+                        // console.log(JSON.stringify(e, null, 4));
+                        let data: any = state?.data;
+                        let routes = data?.state?.routes;
+
+                        setShowTab(true);
+
+                        if (routes && routes.length > 0 && routes[0].name === 'AllNewsStackNav') {
+                            let allNewsStackNavState = routes[0];
+                            let allNewsStackNavStateRoutes = allNewsStackNavState?.state?.routes;
+                            if (allNewsStackNavStateRoutes && allNewsStackNavStateRoutes[1]) {
+                                if (allNewsStackNavStateRoutes[1].name === 'ArticleScreen') {
+                                    setShowTab(false);
+                                }
+                            }
+                        }
+                    },
+                  }}
+                options={({ route, navigation }) => {
+                    return {
+                        tabBarLabel: 'All News',
+                        tabBarIcon: ({ focused, color, }) =>
+                            <Icon name={"newspaper"} style={{ color }} />
+                    };
                 }}
             />
             <BottomTab.Screen
@@ -31,7 +57,7 @@ export function NewsTabNav() {
                 component={TopNewsScreen}
                 options={{
                     tabBarLabel: 'Top News',
-                    tabBarIcon: ({ focused, color,  }) =>
+                    tabBarIcon: ({ focused, color, }) =>
                         <Icon name={"new-box"} style={{ color }} />
                 }}
             />
