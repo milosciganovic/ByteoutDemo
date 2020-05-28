@@ -1,11 +1,12 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import { scale } from 'react-native-size-matters';
 import { SubNavigator } from './types/SubNavigator';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
 import {HomeDrawerNav, HomeDrawerNavScreens} from './HomeDrawerNav';
 import {AboutScreen} from './AboutScreen';
+import { ButtonWithIcon } from '../../components/ButtonWithIcon';
 
 export type RootStackNavScreens = {
     'HomeDrawerNav': SubNavigator<HomeDrawerNavScreens>;

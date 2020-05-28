@@ -8,13 +8,15 @@ import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { AllNewsStackNavScreens } from '.';
 import { HomeDrawerNavScreens } from '../..';
 import { RootStackNavScreens } from "src/app/RootStackNav";
-import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+
 import { NewsTabNavScreens } from "..";
+import { MaterialBottomTabNavigationProp } from "@react-navigation/material-bottom-tabs";
+import { Actions } from "../../../../../components/Actions";
 
 export type NewsScreenNavProp = CompositeNavigationProp<
     StackNavigationProp<AllNewsStackNavScreens, 'NewsScreen'>,
     CompositeNavigationProp<
-        BottomTabNavigationProp<NewsTabNavScreens>,
+        MaterialBottomTabNavigationProp<NewsTabNavScreens>,
         CompositeNavigationProp<
             DrawerNavigationProp<HomeDrawerNavScreens>,
             StackNavigationProp<RootStackNavScreens>
@@ -27,13 +29,14 @@ export interface NewsScreenProps {
 }
 
 export function NewsScreen({ navigation }: NewsScreenProps) {
+ 
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={{ flex: 1 }}>
                 <Text style={{ fontSize: scale(22), fontWeight: 'bold' }}>
                     News Screen
                 </Text>
-                <Button title="Go to article" onPress={() => navigation.navigate('ArticleScreen', { articleId: 3 })} />
+                <Actions title="Go to article" onClick={() => navigation.navigate('ArticleScreen', { articleId: 3 })} />
                 <Button title="Open Drawer" onPress={() => navigation.openDrawer()} />
                 <Button title="Go to settings" onPress={() => navigation.navigate('SettingsScreen')} />
                 <Button title="Open About" onPress={() => navigation.navigate('AboutScreen')} />

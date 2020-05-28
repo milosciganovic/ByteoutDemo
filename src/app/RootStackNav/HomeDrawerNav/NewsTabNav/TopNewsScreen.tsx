@@ -4,7 +4,7 @@ import { scale } from "react-native-size-matters";
 import { RouteProp, CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";
 
-import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { MaterialBottomTabNavigationProp } from "@react-navigation/material-bottom-tabs";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 import {NewsTabNavScreens} from '.';
@@ -14,7 +14,7 @@ import { RootStackNavScreens } from "../..";
 export type TopNewsScreenRouteProp = RouteProp<NewsTabNavScreens, 'TopNewsScreen'>;
 
 export type TopNewsScreenNavProp = CompositeNavigationProp<
-    BottomTabNavigationProp<NewsTabNavScreens, 'TopNewsScreen'>,
+    MaterialBottomTabNavigationProp<NewsTabNavScreens, 'TopNewsScreen'>,
     CompositeNavigationProp<
         DrawerNavigationProp<HomeDrawerNavScreens>,
         StackNavigationProp<RootStackNavScreens>

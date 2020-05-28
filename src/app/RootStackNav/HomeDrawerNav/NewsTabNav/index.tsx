@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
 import { SubNavigator } from 'src/app/RootStackNav/types/SubNavigator';
 
 import { AllNewsStackNavScreens, AllNewsStackNav } from './AllNewsStackNav'
@@ -11,7 +12,7 @@ export type NewsTabNavScreens = {
     'TopNewsScreen': undefined;
 };
 
-const BottomTab = createBottomTabNavigator<NewsTabNavScreens>();
+const BottomTab = createMaterialBottomTabNavigator<NewsTabNavScreens>();
 
 export function NewsTabNav() {
     return (
@@ -20,18 +21,18 @@ export function NewsTabNav() {
                 name="AllNewsStackNav"
                 component={AllNewsStackNav}
                 options={{
-                    title: 'All News',
-                    tabBarIcon: ({ focused, color, size: fontSize }) =>
-                        <Icon name={"newspaper"} style={{ fontSize, color }} />
+                    tabBarLabel: 'All News',
+                    tabBarIcon: ({ focused, color,  }) =>
+                        <Icon name={"newspaper"} style={{ color }} />
                 }}
             />
             <BottomTab.Screen
                 name="TopNewsScreen"
                 component={TopNewsScreen}
                 options={{
-                    title: 'Top News',
-                    tabBarIcon: ({ focused, color, size: fontSize }) =>
-                        <Icon name={"new-box"} style={{ fontSize, color }} />
+                    tabBarLabel: 'Top News',
+                    tabBarIcon: ({ focused, color,  }) =>
+                        <Icon name={"new-box"} style={{ color }} />
                 }}
             />
 
