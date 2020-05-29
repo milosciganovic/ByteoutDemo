@@ -19,7 +19,7 @@ import { TextInput } from "react-native-paper";
 export type ArticleScreenRouteProp = RouteProp<AllNewsStackNavScreens, "ArticleScreen">;
 
 export type ArticleScreenNavProp = CompositeNavigationProp<
-    StackNavigationProp<AllNewsStackNavScreens, 'NewsScreen'>,
+    StackNavigationProp<AllNewsStackNavScreens, 'ArticleScreen'>,
     CompositeNavigationProp<
         MaterialBottomTabNavigationProp<NewsTabNavScreens>,
         CompositeNavigationProp<
