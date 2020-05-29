@@ -37,6 +37,7 @@ export function NewsScreen({ navigation }: NewsScreenProps) {
                     News Screen
                 </Text>
                 <Actions title="Go to article" onClick={() => navigation.navigate('ArticleScreen', { articleId: 3 })} />
+                <Button title="SUBH HEADER TEST SCREEN" onPress={() => navigation.navigate('SubHeaderTestScreen')} />
                 <Button title="Open Drawer" onPress={() => navigation.openDrawer()} />
                 <Button title="Go to settings" onPress={() => navigation.navigate('SettingsScreen')} />
                 <Button title="Open About" onPress={() => navigation.navigate('AboutScreen')} />

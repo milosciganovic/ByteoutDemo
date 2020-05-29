@@ -57,6 +57,7 @@ export function NewsTabNav() {
                 component={TopNewsScreen}
                 options={{
                     tabBarLabel: 'Top News',
+                    title:'title',
                     tabBarIcon: ({ focused, color, }) =>
                         <Icon name={"new-box"} style={{ color }} />
                 }}

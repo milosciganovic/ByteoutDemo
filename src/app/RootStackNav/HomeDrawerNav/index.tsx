@@ -14,7 +14,7 @@ const Drawer = createDrawerNavigator<HomeDrawerNavScreens>();
 
 export function HomeDrawerNav() {
     return (
-        <Drawer.Navigator drawerType="back">
+        <Drawer.Navigator drawerType="back"  >
             <Drawer.Screen
                 name="NewsTabNav"
                 component={NewsTabNav}
@@ -22,6 +22,9 @@ export function HomeDrawerNav() {
             <Drawer.Screen
                 name="SettingsScreen"
                 component={SettingsScreen}
+                options={{
+                    title:'Settings'
+                }}
             />
         </Drawer.Navigator>
     );
