@@ -2,10 +2,12 @@ import React from 'react';
 import { Platform, Button, Text } from 'react-native';
 import { scale } from 'react-native-size-matters';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-
+import {
+    createCollapsibleStack,
+} from 'react-navigation-collapsible';
 import { NewsScreen } from './NewsScreen';
 import { ArticleScreen } from './ArticleScreen';
-import {ButtonWithIcon} from '../../../../../components/ButtonWithIcon';
+import { ButtonWithIcon } from '../../../../../components/ButtonWithIcon';
 
 export type AllNewsStackNavScreens = {
     'NewsScreen': undefined;
@@ -18,11 +20,11 @@ export function AllNewsStackNav() {
     return (
         <Stack.Navigator
             headerMode="screen"
-            screenOptions={({navigation}) => ({
+            screenOptions={({ navigation }) => ({
                 headerLeftContainerStyle: { paddingLeft: Platform.OS === 'ios' ? scale(10) : 0 },
                 headerBackTitleVisible: false,
                 headerTitleAlign: 'center',
-                headerRight: () => (<ButtonWithIcon onClick={() => {navigation.navigate('AboutScreen')}} />),
+                headerRight: () => (<ButtonWithIcon onClick={() => { navigation.navigate('AboutScreen') }} />),
                 ...TransitionPresets.SlideFromRightIOS,
             })}
         >
@@ -30,12 +32,23 @@ export function AllNewsStackNav() {
                 name="NewsScreen"
                 component={NewsScreen}
             />
-            <Stack.Screen
-                initialParams={{articleId: 42}}
-                options={({ route }) => ({ title: `Article ID: ${route?.params?.articleId}` })}
-                name="ArticleScreen"
-                component={ArticleScreen}
-            />
+            {
+                createCollapsibleStack(
+                    <Stack.Screen
+                        initialParams={{ articleId: 42 }}
+                        options={({ route }) => ({headerStyle: { backgroundColor: 'green' }, title: `Article ID: ${route?.params?.articleId}` })}
+                        name="ArticleScreen"
+                        component={ArticleScreen}
+                    />,
+                    {
+                        collapsedColor: 'red' /* Optional */,
+                        useNativeDriver: true,
+                        key: "ArticleScreen",
+                    }
+
+                )
+            }
+
 
         </Stack.Navigator>
     );

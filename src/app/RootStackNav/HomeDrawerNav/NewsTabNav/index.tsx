@@ -20,11 +20,11 @@ export function NewsTabNav() {
             <BottomTab.Screen
                 name="AllNewsStackNav"
                 component={AllNewsStackNav}
-                options={{
+                options={(route) => ({
                     tabBarLabel: 'All News',
                     tabBarIcon: ({ focused, color,  }) =>
                         <Icon name={"newspaper"} style={{ color }} />
-                }}
+                })}
             />
             <BottomTab.Screen
                 name="TopNewsScreen"
